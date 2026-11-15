@@ -35,6 +35,7 @@ nslookup fileserver.lab.local
 将正向域名解析fileserver.lab.local的A记录IP从192.168.10.10改为一个同网段不可达的IP。
 打开“DNS管理器”，找到A记录fileserver.lab.local，双击打开A记录属性面板，修改IP地址
 ![](<../images/Pasted image 20261030112705.png>)
+
 到Client重新执行，查看变化
 ``` shell
 ping fileserver.lab.local
