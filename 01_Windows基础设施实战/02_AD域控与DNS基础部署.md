@@ -1,7 +1,12 @@
 # 给Windows server配置ip
-![](<../images/Pasted image 20261029145446.png>)![](<../images/Pasted image 20261029145609.png>)
+![](<../images/Pasted image 20261029145446.png>)
+
+![](<../images/Pasted image 20261029145609.png>)
+
 ![](<../images/Pasted image 20261029151240.png>)
+
 ![](<../images/Pasted image 20261029151225.png>)
+
 # 建立域控和DNS服务器
 还是在“服务器管理器”中，右上角“管理”-“添加角色和功能”
 ![](<../images/Pasted image 20261029153540.png>)
