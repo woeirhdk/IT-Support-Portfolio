@@ -17,10 +17,13 @@ PTR记录： PTR记录是A记录的逆向记录，又称做IP反查记录或指�
 隐性UR转发记录L： 将域名指向一个http(s)协议地址，访问域名时，自动跳转至目标地址，隐性转发会隐藏真实的目标地址。例如：将www.liuht.cn显性转发到www.itbilu.com后，访问www.liuht.cn时，地址栏显示的地址仍然是：www.liuht.cn。
 
 ![](<../images/Pasted image 20261029204526.png>)
+
 在新建主机对话框中填入名称“fileserver”，本机（域控服务器）IP，勾选“创建相关的指针（PTR）记录
 ![](<../images/Pasted image 20261029205352.png>)
+
 切换到装有Windows 11的Client，手动配置其DNS为server的IP
 ![](<../images/Pasted image 20261029205755.png>)
+
 Win+R打开运行面板，输入cmd，确定，在命令行界面输入ping、nslookup查询DNS服务是否建立成功
 ``` shell
 ping fileserver.lab.local
@@ -44,6 +47,7 @@ nslookup fileserver.lab.local
 ipconfig /displaydns
 ```
 ![](<../images/Pasted image 20261101150000.png>)
+
 命令行刷新DNS，并重新ping和nslookup
 ``` shell
 ipconfig /flushdns
