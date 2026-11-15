@@ -1,6 +1,6 @@
 # 配置DNS
 打开DNS管理器，”服务器管理器“-”工具“-”DNS”
-![](<Pasted image 20261029204255.png>)
+![](<../images/Pasted image 20261029204255.png>)
 在DNS管理器打开“正向查找区域”，右击“lab.local”-“新建主机（A或AAAA）”
 >DNS域名解析中添加的各项解析记录
 A记录： 将域名指向一个IPv4地址（例如：100.100.100.100），需要增加A记录
@@ -15,40 +15,40 @@ PTR记录： PTR记录是A记录的逆向记录，又称做IP反查记录或指�
 显性URL转发记录： 将域名指向一个http(s)协议地址，访问域名时，自动跳转至目标地址。例如：将www.liuht.cn显性转发到www.itbilu.com后，访问www.liuht.cn时，地址栏显示的地址为：www.itbilu.com。
 隐性UR转发记录L： 将域名指向一个http(s)协议地址，访问域名时，自动跳转至目标地址，隐性转发会隐藏真实的目标地址。例如：将www.liuht.cn显性转发到www.itbilu.com后，访问www.liuht.cn时，地址栏显示的地址仍然是：www.liuht.cn。
 
-![](<Pasted image 20261029204526.png>)
+![](<../images/Pasted image 20261029204526.png>)
 在新建主机对话框中填入名称“fileserver”，本机（域控服务器）IP，勾选“创建相关的指针（PTR）记录
-![](<Pasted image 20261029205352.png>)
+![](<../images/Pasted image 20261029205352.png>)
 切换到装有Windows 11的Client，手动配置其DNS为server的IP
-![](<Pasted image 20261029205755.png>)
+![](<../images/Pasted image 20261029205755.png>)
 Win+R打开运行面板，输入cmd，确定，在命令行界面输入ping、nslookup查询DNS服务是否建立成功
 ``` shell
 ping fileserver.lab.local
 nslookup fileserver.lab.local
 ```
 	可以看到DNS解析成功
-![](<Pasted image 20261101145213.png>)
+![](<../images/Pasted image 20261101145213.png>)
 # 人为制造故障
 将正向域名解析fileserver.lab.local的A记录IP从192.168.10.10改为一个同网段不可达的IP。
 打开“DNS管理器”，找到A记录fileserver.lab.local，双击打开A记录属性面板，修改IP地址
-![](<Pasted image 20261030112705.png>)
+![](<../images/Pasted image 20261030112705.png>)
 到Client重新执行，查看变化
 ``` shell
 ping fileserver.lab.local
 nslookup fileserver.lab.local
 ```
 发现还是能够解析，说明客户机有DNS缓存
-![](<Pasted image 20261101145338.png>)
+![](<../images/Pasted image 20261101145338.png>)
 可以通过查看缓存记录的操作观察现象
 ```shell
 ipconfig /displaydns
 ```
-![](<Pasted image 20261101150000.png>)
+![](<../images/Pasted image 20261101150000.png>)
 命令行刷新DNS，并重新ping和nslookup
 ``` shell
 ipconfig /flushdns
 ```
 可见已无法正常访问
-![](<Pasted image 20261101145652.png>)
+![](<../images/Pasted image 20261101145652.png>)
 
 **故障现象**：Client 执行 `ping`，解析到 `192.168.10.250`，提示 `请求超时 (Request timed out)`。  
 **我的第一反应（排查假设）**：
